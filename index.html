@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>TIGERSOFT | Autenticarse como Adm</title>
+  <link rel="stylesheet" type="text/css" href="../css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700">
+  <link id="pagestyle" href="/assets/css/material-dashboard.min.css" rel="stylesheet">
+
+  <!-- Iconos -->
+  <link href="assets/css/nucleo-icons.css" rel="stylesheet">
+  <link href="assets/css/nucleo-svg.css" rel="stylesheet">
+  <link href="assets/css/Material+Icons+Round.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/cursor.css" media="(min-width:768px)">
+
+   <!-- Favicon and Touch Icons-->
+   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+   <link rel="manifest" href="site.webmanifest">
+   <meta name="theme-color" content="#ffffff">
+   <meta name="msapplication-TileColor" content="#ffffff">
+</head>
+
+<body class="bg-gray-200">
+  <main class="main-content  mt-0">
+    <div class="page-header align-items-start min-vh-100"
+      style="background-image: url('assets/img/photo-1611021061285-16c871740efa.avif');">
+      <span class="mask bg-gradient-dark opacity-6"></span>
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
+            <div class="card">
+              <div class="card-header text-center py-0">
+                <div class="mt-n5">
+                  <img class="avatar avatar-xxl shadow-lg" alt="Image placeholder"
+                    src="assets/img/ouytiger.webp">
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <h4 class="mb-0 font-weight-bolder">Javier Sarduy</h4>
+                <p class="mb-4">Introduce la contraseña para continuar</p>
+                <form role="form">
+                  <div class="input-group input-group-dynamic">
+                    <label class="form-label">Contraseña de acceso a la Administración</label>
+                    <input type="password" class="form-control">
+                  </div>
+                  <div class="text-center">
+                    <button type="button" onclick="window.location.href ='pages/dashboards/analytics.html'" class="btn bg-gradient-dark mt-4 mb-0">Entrar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/core/popper.min.js"></script>
+  <script src="assets/js/core/bootstrap.min.js"></script>
+  <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="assets/js/plugins/dragula/dragula.min.js"></script>
+  <script src="assets/js/plugins/jkanban/jkanban.js"></script>
+  <script src="assets/js/bundle.js" media="(min-width:768px)"></script>
+  <script src="service-worker.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+
+  <script async="" defer="" src="assets/js/buttons.js"></script>
+  <script src="assets/js/material-dashboard.min.js"></script>
+</body>
+
+</html>

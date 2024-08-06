@@ -1,0 +1,34 @@
+//asignar un nombre y versión al caché
+const CACHE_NAME='v1_cache_tigersoft',
+urlsToCache= [
+    '/',
+    'index.html',
+    'assets/css/material-dashboard.min.css',
+    'assets/js/material-dashboard.min.js',
+    'assets/js/core/bootstrap.min.js',
+    'assets/js/core/popper.min.js',
+    'assets/img/ouytiger.webp'
+]
+
+// Instalación del service worker
+self.addEventListener('install', function(event) {
+    event.waitUntil(
+      caches.open(CACHE_NAME)
+        .then(function(cache) {
+          console.log('Cache abierta');
+          return cache.addAll(urlsToCache);
+        })
+    );
+  });
+  // Fetch del service worker
+self.addEventListener('fetch', function(event) {
+    event.respondWith(
+      caches.match(event.request)
+        .then(function(response) {
+          if (response) {
+            return response;
+          }
+          return fetch(event.request);
+        })
+    );
+  });
