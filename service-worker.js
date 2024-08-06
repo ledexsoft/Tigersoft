@@ -1,5 +1,5 @@
 //asignar un nombre y versión al caché
-const CACHE_NAME='v1_cache_tigersoft',
+const CACHE_NAME='v1.1_cache_tigersoft',
 urlsToCache= [
     '/',
     'index.html',
