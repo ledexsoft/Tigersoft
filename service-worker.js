@@ -7,6 +7,9 @@ urlsToCache= [
     'assets/js/material-dashboard.min.js',
     'assets/js/core/bootstrap.min.js',
     'assets/js/core/popper.min.js',
+    'assets/img/ouytiger.webp',
+    'assets/img/photo-1611021061285-16c871740efa.avif',
+    'assets/img/IMG-20240806-WA0037.jpg',
     'assets/img/ouytiger.webp'
 ]
 
