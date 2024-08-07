@@ -49,10 +49,10 @@ async function fetchData() {
       <td class="text-sm">$${importe}</td>
       <td class="text-sm">${item.Cantidad}</td>
       <td class="text-sm">
-        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+        <a href="product-details.html?id=${item.id}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
           <i class="material-icons text-secondary position-relative text-lg">visibility</i>
         </a>
-        <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+        <a href="edit-product.html?id=${item.id}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
           <i class="material-icons text-secondary position-relative text-lg">drive_file_rename_outline</i>
         </a>
         <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product" onclick="deleteProduct(${item.id}, this)">
