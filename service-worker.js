@@ -9,7 +9,7 @@ const urlsToCache = [
   'assets/js/core/popper.min.js',
   'assets/img/ouytiger.webp',
   'assets/img/photo-1611021061285-16c871740efa.avif',
-  'assets/img/IMG-20240806-WA0037.jpg'
+  'assets/img/IMG-20240806-WA0037.webp'
 ];
 
 // Instalación del service worker
