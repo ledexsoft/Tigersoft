@@ -1,5 +1,4 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-
 // Definir las tres constantes
 const cadena1 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJzd3F";
 const cadena2 = "teG1hbnV0cWxheXpkdHBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjI4OTAyNTgsImV4cCI6";
@@ -63,6 +62,9 @@ async function fetchData() {
 
     tbody.appendChild(row);
   });
+
+  // Inicializar DataTables
+  $('#products-list').DataTable();
 }
 
 // Definir la función deleteProduct en el contexto global
