@@ -1,300 +1,261 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
-
+<html lang=es>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../../../apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="../../../favicon-32x32.png">
-  <title>
-    TIGERSOFT | LISTADO DE PRODUCTOS
-  </title>
-
-  <script>
-    document.addEventListener("visibilitychange", function () {
-      if (document.visibilityState === "visible") {
-        window.location.href = "../../../index.html"; // Cambia "index.html" por la URL de la página de inicio de sesión
-      }
-    });
-  </script>
-  <script type="module" src="../../../server.js"></script>
-  <link href="../../../assets/css/nucleo-icons.css" rel="stylesheet">
-  <link href="../../../assets/css/nucleo-svg.css" rel="stylesheet">
-
-  <link href="../../../assets/css/Material+Icons+Round.css" rel="stylesheet">
-  <link id="pagestyle" href="../../../assets/css/material-dashboard.min.css" rel="stylesheet">
-
-
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel=apple-touch-icon sizes=76x76 href=../../../apple-touch-icon.png>
+<link rel=icon type=image/png href=../../../favicon-32x32.png>
+<title>
+TIGERSOFT | LISTADO DE PRODUCTOS
+</title>
+<script>document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible"){window.location.href="../../../index.html";}});</script>
+<script type=module src=../../../server.js></script>
+<link href=../../../assets/css/nucleo-icons.css rel=stylesheet>
+<link href=../../../assets/css/nucleo-svg.css rel=stylesheet>
+<link href=../../../assets/css/Material+Icons+Round.css rel=stylesheet>
+<link id=pagestyle href=../../../assets/css/material-dashboard.min.css rel=stylesheet>
 </head>
-
-<body class="g-sidenav-show  bg-gray-200">
-
-
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-
-            <div class="card-header pb-0">
-              <div class="d-lg-flex">
-                <div>
-                  <h5 class="mb-0">Todos los productos disponibles en el almacén </h5>
-                  <p class="text-sm mb-0">
-                    Recuerda contabilizar correctamente en el almacén al agregar un producto a la lista.
-                  </p>
-                </div>
-                <div class="ms-auto my-auto mt-lg-0 mt-4">
-                  <div class="ms-auto my-auto">
-                    <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModalForm"
-                      class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Nuevo
-                      Producto</a>
-                    <button type="button" class="btn btn-outline-primary btn-sm mb-0" data-bs-toggle="modal"
-                      data-bs-target="#import">
-                      Importar
-                    </button>
-                    <div class="modal fade" id="import" tabindex="-1" aria-hidden="true">
-                      <div class="modal-dialog mt-lg-10">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="ModalLabel">Importar y subir lista desde tu dispositivo</h5>
-                            <i class="material-icons ms-3">file_upload</i>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <p>Puedes buscar un archivo en su computadora.</p>
-                            <div class="input-group input-group-dynamic mb-3">
-                              <label class="form-label">Buscar archivo...</label>
-                              <input type="email" class="form-control" onfocus="focused(this)"
-                                onfocusout="defocused(this)">
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn bg-gradient-secondary btn-sm"
-                              data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn bg-gradient-primary btn-sm">Subir</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <button class="btn btn-outline-primary btn-sm export mb-0 mt-sm-0 mt-1" data-type="csv"
-                      type="button" name="button">Exportar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card-body px-0 pb-0">
-              <div class="table-responsive">
-                <table class="table table-flush" id="products-list">
-                  <thead class="thead-light">
-                    <tr>
-                      <th>Productos</th>
-                      <th>Entrada</th>
-                      <th>Cantidad</th>
-                      <th>Precio</th>
-                      <th>Importe</th>
-                      <th>Categoría</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody id="products-tbody">
-                    <!-- Las filas se agregarán aquí dinámicamente -->
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>Productos</th>
-                      <th>Entrada</th>
-                      <th>Cantidad</th>
-                      <th>Precio</th>
-                      <th>Importe</th>
-                      <th>Categoría</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <div class="fixed-plugin">
-    <div class="card shadow-lg">
-      <div class="card-header pb-0 pt-3">
-        <div class="float-start">
-          <h5 class="mt-3 mb-0">Configuración de Tigersoft</h5>
-          <p>Modifica la apariecia de la aplicación.</p>
-        </div>
-        <div class="float-end mt-4">
-          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
-            <i class="material-icons">clear</i>
-          </button>
-        </div>
-
-      </div>
-      <hr class="horizontal dark my-1">
-      <div class="card-body pt-sm-3 pt-0">
-
-        <div>
-          <h6 class="mb-0">Color principal del tema</h6>
-        </div>
-        <a href="javascript:void(0)" class="switch-trigger background-color">
-          <div class="badge-colors my-2 text-start">
-            <span class="badge filter bg-gradient-primary active" data-color="primary"
-              onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
-          </div>
-        </a>
-
-        <div class="mt-3">
-          <h6 class="mb-0">Barra de navegación</h6>
-          <p class="text-sm">Configura el tema como más cómodo te sea.</p>
-        </div>
-        <div class="d-flex">
-          <button class="btn bg-gradient-dark px-2 mb-2 active" data-class="bg-gradient-dark"
-            onclick="sidebarType(this)">Oscuro</button>
-          <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent"
-            onclick="sidebarType(this)">Transparente</button>
-          <button class="btn bg-gradient-dark px-2 mb-2 ms-2" data-class="bg-white"
-            onclick="sidebarType(this)">Blanco</button>
-        </div>
-        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
-
-        <div class="mt-3 d-flex">
-          <h6 class="mb-0">Barra superior fija</h6>
-          <div class="form-check form-switch ps-0 ms-auto my-auto">
-            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
-          </div>
-        </div>
-        <hr class="horizontal dark my-3">
-        <div class="mt-2 d-flex">
-          <h6 class="mb-0">Mini-barra</h6>
-          <div class="form-check form-switch ps-0 ms-auto my-auto">
-            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarMinimize"
-              onclick="navbarMinimize(this)">
-          </div>
-        </div>
-        <hr class="horizontal dark my-3">
-        <div class="mt-2 d-flex">
-          <h6 class="mb-0">Claro / Oscuro</h6>
-          <div class="form-check form-switch ps-0 ms-auto my-auto">
-            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
-          </div>
-        </div>
-        <hr class="horizontal dark my-sm-4">
-        <a class="btn bg-gradient-primary w-100" href="https://www.creative-tim.com/product/material-dashboard-pro">Buy
-          now</a>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Modal Formulario de inicio de sesión de afiliado -->
-  <div class="modal fade" id="exampleModalForm" tabindex="-1" aria-labelledby="exampleModalForm" aria-hidden="true">
-    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
-      <div class="modal-content">
-        <div class="modal-body p-0">
-          <div class="card bg-gray-200 shadow border-0 mb-0">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div class="bg-gradient-warning shadow-warning border-radius-lg py-3 pe-1 text-center py-4">
-                <h4 class="font-weight-bolder text-white mt-1 mb-0">Agregar nuevo producto</h4>
-                <p class="mb-1 text-sm text-white">Esta información será enviada a la tabla de productos</p>
-              </div>
-            </div>
-            <div class="card-body">
-              <form role="form text-start" id="IniciarAfiliado">
-                <div class="row mt-3">
-                  <div class="col-12 col-sm-6">
-                    <div class="input-group input-group-dynamic">
-                      <label for="nombre" class="form-label">Nombre</label>
-                      <input id="nombre" class="multisteps-form__input form-control" type="text" required>
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                    <div class="input-group input-group-dynamic">
-                      <label for="precio" class="form-label">Precio</label>
-                      <input id="precio" class="multisteps-form__input form-control" type="number" required>
-                    </div>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-12 col-sm-6">
-                    <div class="input-group input-group-dynamic">
-                      <label for="cantidad" class="form-label">Cantidad</label>
-                      <input id="cantidad" class="multisteps-form__input form-control" type="number" required>
-                    </div>
-                  </div>
-                  <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                    <div class="input-group input-group-dynamic">
-                      <label for="categoria" class="form-label">Categoria</label>
-                      <input id="categoria" class="multisteps-form__input form-control" type="text" required>
-                    </div>
-                  </div>
-                </div>
-                <div class="text-center">
-                  <button type="submit" class="btn bg-gradient-warning mt-4 mb-0">Agregar</button>
-                </div>
-              </form>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="../../../assets/js/core/popper.min.js"></script>
-  <script src="../../../assets/js/core/bootstrap.min.js"></script>
-  <script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="../../../assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script src="../../../assets/js/plugins/datatables.js"></script>
-  <script>
-    if (document.getElementById('products-list')) {
-      const dataTableSearch = new simpleDatatables.DataTable("#products-list", {
-        searchable: true,
-        fixedHeight: false,
-        perPage: 7
-      });
-
-      document.querySelectorAll(".export").forEach(function (el) {
-        el.addEventListener("click", function (e) {
-          var type = el.dataset.type;
-
-          var data = {
-            type: type,
-            filename: "material-" + type,
-          };
-
-          if (type === "csv") {
-            data.columnDelimiter = "|";
-          }
-
-          dataTableSearch.export(data);
-        });
-      });
-    };
-  </script>
-
-  <script src="../../../assets/js/plugins/dragula/dragula.min.js"></script>
-  <script src="../../../assets/js/plugins/jkanban/jkanban.js"></script>
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
-
-  <script async="" defer="" src="../../../assets/js/buttons.js"></script>
-
-  <script src="../../../assets/js/material-dashboard.min.js"></script>
+<body class="g-sidenav-show bg-gray-200">
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+<div class="container-fluid py-4">
+<div class=row>
+<div class=col-12>
+<div class=card>
+<div class="card-header pb-0">
+<div class=d-lg-flex>
+<div>
+<h5 class=mb-0>Todos los productos disponibles en el almacén </h5>
+<p class="text-sm mb-0">
+Recuerda contabilizar correctamente en el almacén al agregar un producto a la lista.
+</p>
+</div>
+<div class="ms-auto my-auto mt-lg-0 mt-4">
+<div class="ms-auto my-auto">
+<a type=button data-bs-toggle=modal data-bs-target=#exampleModalForm class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Nuevo
+Producto</a>
+<button type=button class="btn btn-outline-primary btn-sm mb-0" data-bs-toggle=modal data-bs-target=#import>
+Importar
+</button>
+<div class="modal fade" id=import tabindex=-1 aria-hidden=true>
+<div class="modal-dialog mt-lg-10">
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title id=ModalLabel>Subir lista desde tu dispositivo</h5>
+<i class="material-icons ms-3">file_upload</i>
+<button type=button class=btn-close data-bs-dismiss=modal aria-label=Close></button>
+</div>
+<div class=modal-body>
+<p>Puedes buscar un archivo en su computadora.</p>
+<div class="input-group input-group-dynamic mb-3">
+<label class=form-label>Buscar archivo...</label>
+<input type=email class=form-control onfocus=focused(this) onfocusout=defocused(this)>
+</div>
+</div>
+<div class=modal-footer>
+<button type=button class="btn bg-gradient-secondary btn-sm" data-bs-dismiss=modal>Cancelar</button>
+<button type=button class="btn bg-gradient-primary btn-sm">Subir</button>
+</div>
+</div>
+</div>
+</div>
+<button class="btn btn-outline-primary btn-sm export mb-0 mt-sm-0 mt-1" data-type=csv type=button name=button>Exportar</button>
+</div>
+</div>
+</div>
+</div>
+<div class="card-body px-0 pb-0">
+<div class=table-responsive>
+<table class="table table-flush" id=products-list>
+<thead class=thead-light>
+<tr>
+<th>Productos</th>
+<th>Entrada</th>
+<th>Cantidad</th>
+<th>Precio</th>
+<th>Importe</th>
+<th>Categoría</th>
+<th>Acciones</th>
+</tr>
+</thead>
+<tbody id=products-tbody>
+</tbody>
+<tfoot>
+<tr>
+<th>Productos</th>
+<th>Entrada</th>
+<th>Cantidad</th>
+<th>Precio</th>
+<th>Importe</th>
+<th>Categoría</th>
+<th>Acciones</th>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class=fixed-plugin>
+<div class="card shadow-lg">
+<div class="card-header pb-0 pt-3">
+<div class=float-start>
+<h5 class="mt-3 mb-0">Configuración de Tigersoft</h5>
+<p>Modifica la apariecia de la aplicación.</p>
+</div>
+<div class="float-end mt-4">
+<button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+<i class=material-icons>clear</i>
+</button>
+</div>
+</div>
+<hr class="horizontal dark my-1">
+<div class="card-body pt-sm-3 pt-0">
+<div>
+<h6 class=mb-0>Color principal del tema</h6>
+</div>
+<a href=javascript:void(0) class="switch-trigger background-color">
+<div class="badge-colors my-2 text-start">
+<span class="badge filter bg-gradient-primary active" data-color=primary onclick=sidebarColor(this)></span>
+<span class="badge filter bg-gradient-dark" data-color=dark onclick=sidebarColor(this)></span>
+<span class="badge filter bg-gradient-info" data-color=info onclick=sidebarColor(this)></span>
+<span class="badge filter bg-gradient-success" data-color=success onclick=sidebarColor(this)></span>
+<span class="badge filter bg-gradient-warning" data-color=warning onclick=sidebarColor(this)></span>
+<span class="badge filter bg-gradient-danger" data-color=danger onclick=sidebarColor(this)></span>
+</div>
+</a>
+<div class=mt-3>
+<h6 class=mb-0>Barra de navegación</h6>
+<p class=text-sm>Configura el tema como más cómodo te sea.</p>
+</div>
+<div class=d-flex>
+<button class="btn bg-gradient-dark px-2 mb-2 active" data-class=bg-gradient-dark onclick=sidebarType(this)>Oscuro</button>
+<button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class=bg-transparent onclick=sidebarType(this)>Transparente</button>
+<button class="btn bg-gradient-dark px-2 mb-2 ms-2" data-class=bg-white onclick=sidebarType(this)>Blanco</button>
+</div>
+<p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+<div class="mt-3 d-flex">
+<h6 class=mb-0>Barra superior fija</h6>
+<div class="form-check form-switch ps-0 ms-auto my-auto">
+<input class="form-check-input mt-1 ms-auto" type=checkbox id=navbarFixed onclick=navbarFixed(this)>
+</div>
+</div>
+<hr class="horizontal dark my-3">
+<div class="mt-2 d-flex">
+<h6 class=mb-0>Mini-barra</h6>
+<div class="form-check form-switch ps-0 ms-auto my-auto">
+<input class="form-check-input mt-1 ms-auto" type=checkbox id=navbarMinimize onclick=navbarMinimize(this)>
+</div>
+</div>
+<hr class="horizontal dark my-3">
+<div class="mt-2 d-flex">
+<h6 class=mb-0>Claro / Oscuro</h6>
+<div class="form-check form-switch ps-0 ms-auto my-auto">
+<input class="form-check-input mt-1 ms-auto" type=checkbox id=dark-version onclick=darkMode(this)>
+</div>
+</div>
+<hr class="horizontal dark my-sm-4">
+<a class="btn bg-gradient-primary w-100" href=https://www.creative-tim.com/product/material-dashboard-pro>Buy
+now</a>
+</div>
+</div>
+</div>
+<div class="modal fade" id=exampleModalForm tabindex=-1 aria-labelledby=exampleModalForm aria-hidden=true>
+<div class="modal-dialog modal-danger modal-dialog-centered modal-" role=document>
+<div class=modal-content>
+<div class="modal-body p-0">
+<div class="card bg-gray-200 shadow border-0 mb-0">
+<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+<div class="bg-gradient-warning shadow-warning border-radius-lg py-3 pe-1 text-center py-4">
+<h4 class="font-weight-bolder text-white mt-1 mb-0">Agregar nuevo producto</h4>
+<p class="mb-1 text-sm text-white">Esta información será enviada a la tabla de productos</p>
+</div>
+</div>
+<div class=card-body>
+<form role="form text-start" id=IniciarAfiliado>
+<div class="row mt-3">
+<div class="col-12 col-sm-6">
+<div class="input-group input-group-dynamic">
+<label for=nombre class=form-label>Nombre</label>
+<input id=nombre class="multisteps-form__input form-control" type=text required>
+</div>
+</div>
+<div class="col-12 col-sm-6 mt-3 mt-sm-0">
+<div class="input-group input-group-dynamic">
+<label for=precio class=form-label>Precio</label>
+<input id=precio class="multisteps-form__input form-control" type=number required>
+</div>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-12 col-sm-6">
+<div class="input-group input-group-dynamic">
+<label for=cantidad class=form-label>Cantidad</label>
+<input id=cantidad class="multisteps-form__input form-control" type=number required>
+</div>
+</div>
+<div class="col-12 col-sm-6 mt-3 mt-sm-0">
+<div class="input-group input-group-dynamic">
+<label for=categoria class=form-label>Categoria</label>
+<input id=categoria class="multisteps-form__input form-control" type=text required>
+</div>
+</div>
+</div>
+<div class=text-center>
+<button type=submit class="btn bg-gradient-warning mt-4 mb-0">Agregar</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id=editProductModal tabindex=-1 aria-labelledby=editProductModalLabel aria-hidden=true>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title id=editProductModalLabel>Editar Producto</h5>
+<button type=button class=btn-close data-bs-dismiss=modal aria-label=Close></button>
+</div>
+<div class=modal-body>
+<form id=editProductForm>
+<div class=mb-3>
+<label for=editNombre class=form-label>Nombre</label>
+<input type=text class=form-control id=editNombre required>
+</div>
+<div class=mb-3>
+<label for=editPrecio class=form-label>Precio</label>
+<input type=number class=form-control id=editPrecio required>
+</div>
+<div class=mb-3>
+<label for=editCantidad class=form-label>Cantidad</label>
+<input type=number class=form-control id=editCantidad required>
+</div>
+<div class=mb-3>
+<label for=editCategoria class=form-label>Categoría</label>
+<input type=text class=form-control id=editCategoria required>
+</div>
+<button type=submit class="btn btn-primary">Guardar Cambios</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+<script src=../../../assets/js/core/popper.min.js></script>
+<script src=../../../assets/js/core/bootstrap.min.js></script>
+<script src=../../../assets/js/plugins/perfect-scrollbar.min.js></script>
+<script src=../../../assets/js/plugins/smooth-scrollbar.min.js></script>
+<script src=../../../assets/js/plugins/datatables.js></script>
+<script>if(document.getElementById('products-list')){const dataTableSearch=new simpleDatatables.DataTable("#products-list",{searchable:true,fixedHeight:false,perPage:7});document.querySelectorAll(".export").forEach(function(el){el.addEventListener("click",function(e){var type=el.dataset.type;var data={type:type,filename:"material-"+type,};if(type==="csv"){data.columnDelimiter="|";}
+dataTableSearch.export(data);});});};</script>
+<script src=../../../assets/js/plugins/dragula/dragula.min.js></script>
+<script src=../../../assets/js/plugins/jkanban/jkanban.js></script>
+<script>var win=navigator.platform.indexOf('Win')>-1;if(win&&document.querySelector('#sidenav-scrollbar')){var options={damping:'0.5'}
+Scrollbar.init(document.querySelector('#sidenav-scrollbar'),options);}</script>
+<script async defer src=../../../assets/js/buttons.js></script>
+<script src=../../../assets/js/material-dashboard.min.js></script>
 </body>
-
 </html>

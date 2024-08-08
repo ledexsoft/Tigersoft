@@ -1,131 +1,94 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
-
+<html lang=es>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>TIGERSOFT | Autenticarse</title>
-  <link id="pagestyle" href="assets/css/material-dashboard.min.css" rel="stylesheet">
-
-  <!-- Iconos -->
-  <link href="assets/css/nucleo-icons.css" rel="stylesheet">
-  <link href="assets/css/nucleo-svg.css" rel="stylesheet">
-  <link href="assets/css/Material+Icons+Round.css" rel="stylesheet">
-
-  <!-- Favicon and Touch Icons-->
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="manifest" href="site.webmanifest">
-  <script src="service-worker.js"></script>
-  <meta name="theme-color" content="#ffffff">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <script type="module" src="server.js"></script>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>TIGERSOFT | Autenticarse</title>
+<link id=pagestyle href=assets/css/material-dashboard.min.css rel=stylesheet>
+<link href=assets/css/nucleo-icons.css rel=stylesheet>
+<link href=assets/css/nucleo-svg.css rel=stylesheet>
+<link href=assets/css/Material+Icons+Round.css rel=stylesheet>
+<link rel=apple-touch-icon sizes=180x180 href=apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=favicon-16x16.png>
+<link rel=manifest href=site.webmanifest>
+<script src=service-worker.js></script>
+<meta name=theme-color content=#ffffff>
+<meta name=msapplication-TileColor content=#ffffff>
+<script type=module src=server.js></script>
 </head>
-
-<body class="">
-  <!-- Versión móvil -->
-  <main class="d-block d-md-none main-content  mt-0">
-    <div class="page-header align-items-start min-vh-100"
-      style="background-image: url('assets/img/photo-1611021061285-16c871740efa.avif');">
-      <span class="mask bg-gradient-dark opacity-6"></span>
-      <div class="container my-auto">
-        <div class="row">
-          <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
-            <div class="card">
-              <div class="card-header text-center py-0">
-                <div class="mt-n5">
-                  <img class="avatar avatar-xxl shadow-lg" alt="Image placeholder" src="assets/img/ouytiger.webp">
-                </div>
-              </div>
-              <div class="card-body text-center">
-                <h4 class="mb-0 font-weight-bolder">Javier Sarduy</h4>
-                <p class="mb-4">Introduce la contraseña para continuar</p>
-                <form role="form" onsubmit="return validarFormulario(event)">
-                  <div class="input-group input-group-dynamic">
-                      <label class="form-label">Contraseña de acceso a la Administración</label>
-                      <input type="password" id="admin-password" class="form-control" required>
-                  </div>
-                  <div class="text-center">
-                      <button type="submit" class="btn bg-gradient-dark mt-4 mb-0">Entrar</button>
-                  </div>
-              </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <!-- Versión PC -->
-  <main class="d-none d-md-block main-content  mt-0">
-    <section>
-      <div class="page-header min-vh-100">
-        <div class="container">
-          <div class="row">
-            <!-- Columna de la imagen -->
-            <div
-              class="col-12 col-md-6 d-md-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
-              <div
-                class="position-relative bg-gradient-dark h-100 m-3 px border-radius-lg d-flex flex-column justify-content-center"
-                style="background-image: url('assets/img/IMG-20240806-WA0037.webp'); background-size: cover; background-position: center;">
-              </div>
-            </div>
-            <!-- Columna del formularios -->
-            <div class="col-12 col-md-6 col-lg-4 d-flex flex-column ms-auto ms-lg-auto me-lg-5 position-relative">
-              <div class="card card-plain py-lg-3">
-                <div class="card-body text-center">
-                  <h4 class="mb-0 font-weight-bolder">Javier Sarduy</h4>
-                  <p class="mb-4">Introduce la contraseña</p>
-                  <form role="form" onsubmit="return validarFormulario(event)">
-                    <div class="input-group input-group-outline mb-3">
-                        <label class="form-label">Contraseña</label>
-                        <input type="password" id="password" class="form-control" required>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-lg w-100 bg-gradient-dark mb-0">Continuar</button>
-                    </div>
-                </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <script>
-    function validarFormulario(event) {
-            event.preventDefault(); // Evita el envío del formulario por defecto
-            var password = event.target.querySelector('input[type="password"]').value;
-            if (password === "jsr") {
-                window.location.href = "pages/ecommerce/products/products-list.html";
-            } else {
-                alert("Contraseña incorrecta");
-            }
-        }
-  </script>
-
-  <script src="assets/js/core/popper.min.js"></script>
-  <script src="assets/js/core/bootstrap.min.js"></script>
-  <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script src="assets/js/plugins/dragula/dragula.min.js"></script>
-  <script src="assets/js/plugins/jkanban/jkanban.js"></script>
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
-
-  <script async="" defer="" src="assets/js/buttons.js"></script>
-  <script src="assets/js/material-dashboard.min.js"></script>
+<body class>
+<main class="d-block d-md-none main-content mt-0">
+<div class="page-header align-items-start min-vh-100" style="background-image:url('assets/img/photo-1611021061285-16c871740.webp')">
+<span class="mask bg-gradient-dark opacity-6"></span>
+<div class="container my-auto">
+<div class=row>
+<div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
+<div class=card>
+<div class="card-header text-center py-0">
+<div class=mt-n5>
+<img class="avatar avatar-xxl shadow-lg" alt="Image placeholder" src=assets/img/ouytiger.webp>
+</div>
+</div>
+<div class="card-body text-center">
+<h4 class="mb-0 font-weight-bolder">Javier Sarduy</h4>
+<p class=mb-4>Introduce la contraseña para continuar</p>
+<form role=form onsubmit="return validarFormulario(event)">
+<div class="input-group input-group-dynamic">
+<label class=form-label>Contraseña de acceso a la Administración</label>
+<input type=password id=admin-password class=form-control required>
+</div>
+<div class=text-center>
+<button type=submit class="btn bg-gradient-dark mt-4 mb-0">Entrar</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<main class="d-none d-md-block main-content mt-0">
+<section>
+<div class="page-header min-vh-100">
+<div class=container>
+<div class=row>
+<div class="col-12 col-md-6 d-md-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+<div class="position-relative bg-gradient-dark h-100 m-3 px border-radius-lg d-flex flex-column justify-content-center" style="background-image:url('assets/img/IMG-20240806-WA0037.webp');background-size:cover;background-position:center">
+</div>
+</div>
+<div class="col-12 col-md-6 col-lg-4 d-flex flex-column ms-auto ms-lg-auto me-lg-5 position-relative">
+<div class="card card-plain py-lg-3">
+<div class="card-body text-center">
+<h4 class="mb-0 font-weight-bolder">Javier Sarduy</h4>
+<p class=mb-4>Introduce la contraseña</p>
+<form role=form onsubmit="return validarFormulario(event)">
+<div class="input-group input-group-outline mb-3">
+<label class=form-label>Contraseña</label>
+<input type=password id=password class=form-control required>
+</div>
+<div class=text-center>
+<button type=submit class="btn btn-lg w-100 bg-gradient-dark mb-0">Continuar</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script>function validarFormulario(b){b.preventDefault();var a=b.target.querySelector('input[type="password"]').value;if(a==="jsr"){window.location.href="pages/ecommerce/products/products-list.html"}else{alert("Contraseña incorrecta")}}</script>
+<script src=assets/js/core/popper.min.js></script>
+<script src=assets/js/core/bootstrap.min.js></script>
+<script src=assets/js/plugins/perfect-scrollbar.min.js></script>
+<script src=assets/js/plugins/smooth-scrollbar.min.js></script>
+<script src=assets/js/plugins/dragula/dragula.min.js></script>
+<script src=assets/js/plugins/jkanban/jkanban.js></script>
+<script>var win=navigator.platform.indexOf("Win")>-1;if(win&&document.querySelector("#sidenav-scrollbar")){var options={damping:"0.5"};Scrollbar.init(document.querySelector("#sidenav-scrollbar"),options)};</script>
+<script async defer src=assets/js/buttons.js></script>
+<script src=assets/js/material-dashboard.min.js></script>
 </body>
-
 </html>
