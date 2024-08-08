@@ -10,315 +10,27 @@
     TIGERSOFT | LISTADO DE PRODUCTOS
   </title>
 
+  <script>
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "visible") {
+        window.location.href = "../../../index.html"; // Cambia "index.html" por la URL de la página de inicio de sesión
+      }
+    });
+  </script>
   <script type="module" src="../../../server.js"></script>
   <link href="../../../assets/css/nucleo-icons.css" rel="stylesheet">
   <link href="../../../assets/css/nucleo-svg.css" rel="stylesheet">
 
   <link href="../../../assets/css/Material+Icons+Round.css" rel="stylesheet">
   <link id="pagestyle" href="../../../assets/css/material-dashboard.min.css" rel="stylesheet">
- 
+
 
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
 
-  <aside
-    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
-    id="sidenav-main">
-    <div class="sidenav-header">
-      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-        aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0"
-        href="../../../analytics.html ">
-        <img src="../../../apple-touch-icon.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold text-white">TIGERSOFT</span>
-      </a>
-    </div>
-    <hr class="horizontal light mt-0 mb-2">
-    <div class="collapse navbar-collapse  w-auto h-auto" id="sidenav-collapse-main">
-      <ul class="navbar-nav">
-        <li class="nav-item mb-2 mt-0">
-          <a data-bs-toggle="collapse" href="#ProfileNav" class="nav-link text-white" aria-controls="ProfileNav"
-            role="button" aria-expanded="false">
-            <img src="../../../assets/img/ouytiger.webp" class="avatar">
-            <span class="nav-link-text ms-2 ps-1">Javier Sarduy</span>
-          </a>
-          <div class="collapse" id="ProfileNav" >
-            <ul class="nav ">
-              <li class="nav-item">
-                <a class="nav-link text-white" href="../../../pages/pages/profile/overview.html">
-                  <span class="sidenav-mini-icon"> MP </span>
-                  <span class="sidenav-normal  ms-3  ps-1"> Mi Perfil </span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white " href="../../../pages/pages/account/settings.html">
-                  <span class="sidenav-mini-icon"> S </span>
-                  <span class="sidenav-normal  ms-3  ps-1"> Ajustes </span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white " href="../../../index.html">
-                  <span class="sidenav-mini-icon"> CS </span>
-                  <span class="sidenav-normal  ms-3  ps-1"> Cerrar sesión </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <hr class="horizontal light mt-0">
-        <li class="nav-item">
-          <a data-bs-toggle="collapse" href="#dashboardsExamples" class="nav-link text-white "
-            aria-controls="dashboardsExamples" role="button" aria-expanded="false">
-            <i class="material-icons-round opacity-10">dashboard</i>
-            <span class="nav-link-text ms-2 ps-1">Estadísticas</span>
-          </a>
-          <div class="collapse " id="dashboardsExamples">
-            <ul class="nav ">
-              <li class="nav-item ">
-                <a class="nav-link text-white " href="../../../analytics.html">
-                  <span class="sidenav-mini-icon"> P </span>
-                  <span class="sidenav-normal  ms-2  ps-1"> Página principal </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a data-bs-toggle="collapse" href="#ecommerceExamples" class="nav-link text-white active"
-            aria-controls="ecommerceExamples" role="button" aria-expanded="false">
-            <i
-              class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">shopping_basket</i>
-            <span class="nav-link-text ms-2 ps-1">Tienda</span>
-          </a>
-          <div class="collapse  show " id="ecommerceExamples">
-            <ul class="nav ">
-              <li class="nav-item ">
-                <a class="nav-link text-white  active " data-bs-toggle="collapse" aria-expanded="false"
-                  href="#productsExample">
-                  <span class="sidenav-mini-icon"> P </span>
-                  <span class="sidenav-normal  ms-2  ps-1"> Productos <b class="caret"></b></span>
-                </a>
-                <div class="collapse show" id="productsExample">
-                  <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
-                      <a class="nav-link text-white" href="new-product.html">
-                        <span class="sidenav-mini-icon"> A </span>
-                        <span class="sidenav-normal  ms-2  ps-1"> Agregar producto nuevo </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link text-white active" href="products-list.html">
-                        <span class="sidenav-mini-icon"> P </span>
-                        <span class="sidenav-normal  ms-2  ps-1"> Productos en el almacén </span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </li><li class="nav-item">
-          <a data-bs-toggle="collapse" href="#authExamples" class="nav-link text-white " aria-controls="authExamples"
-            role="button" aria-expanded="false">
-            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">content_paste</i>
-            <span class="nav-link-text ms-2 ps-1">Facturas</span>
-          </a>
-          <div class="collapse " id="authExamples">
-            <ul class="nav ">
-              <li class="nav-item ">
-                <a class="nav-link text-white " data-bs-toggle="collapse" aria-expanded="false" href="#signinExample">
-                  <span class="sidenav-mini-icon"> FC </span>
-                  <span class="sidenav-normal  ms-2  ps-1"> Fichas de costo<b class="caret"></b></span>
-                </a>
-                <div class="collapse " id="signinExample">
-                  <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
-                      <a class="nav-link text-white " href="pages/authentication/signin/basic.html">
-                        <span class="sidenav-mini-icon"> R </span>
-                        <span class="sidenav-normal  ms-2  ps-1"> Realizadas </span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link text-white " data-bs-toggle="collapse" aria-expanded="false" href="#signupExample">
-                  <span class="sidenav-mini-icon"> FR </span>
-                  <span class="sidenav-normal  ms-2  ps-1"> Facturas realizadas <b class="caret"></b></span>
-                </a>
-                <div class="collapse " id="signupExample">
-                  <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
-                      <a class="nav-link text-white " href="pages/authentication/signup/basic.html">
-                        <span class="sidenav-mini-icon"> 01-06 </span>
-                        <span class="sidenav-normal  ms-2  ps-1"> Primer semestre </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link text-white " href="pages/authentication/signup/cover.html">
-                        <span class="sidenav-mini-icon"> 06-12 </span>
-                        <span class="sidenav-normal  ms-2  ps-1"> Segundo semestre </span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link text-white "
-            aria-controls="applicationsExamples" role="button" aria-expanded="false">
-            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">person</i>
-            <span class="nav-link-text ms-2 ps-1">Empleados</span>
-          </a>
-          <div class="collapse " id="applicationsExamples">
-            <ul class="nav ">
-              <li class="nav-item ">
-                <a class="nav-link text-white " href="../../../pages/applications/crm.html">
-                  <span class="sidenav-mini-icon"> S </span>
-                  <span class="sidenav-normal  ms-2  ps-1"> Salario de empleados </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </aside>
+
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-
-    <nav
-    class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky"
-    id="navbarBlur" data-scroll="true">
-    <div class="container-fluid py-1 px-3">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-          <li class="breadcrumb-item text-sm">
-            <a class="opacity-3 text-dark" href="javascript:;">
-              <svg width="12px" height="12px" class="mb-1" viewbox="0 0 45 40" version="1.1"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>shop </title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-1716.000000, -439.000000)" fill="#252f40" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(0.000000, 148.000000)">
-                        <path
-                          d="M46.7199583,10.7414583 L40.8449583,0.949791667 C40.4909749,0.360605034 39.8540131,0 39.1666667,0 L7.83333333,0 C7.1459869,0 6.50902508,0.360605034 6.15504167,0.949791667 L0.280041667,10.7414583 C0.0969176761,11.0460037 -1.23209662e-05,11.3946378 -1.23209662e-05,11.75 C-0.00758042603,16.0663731 3.48367543,19.5725301 7.80004167,19.5833333 L7.81570833,19.5833333 C9.75003686,19.5882688 11.6168794,18.8726691 13.0522917,17.5760417 C16.0171492,20.2556967 20.5292675,20.2556967 23.494125,17.5760417 C26.4604562,20.2616016 30.9794188,20.2616016 33.94575,17.5760417 C36.2421905,19.6477597 39.5441143,20.1708521 42.3684437,18.9103691 C45.1927731,17.649886 47.0084685,14.8428276 47.0000295,11.75 C47.0000295,11.3946378 46.9030823,11.0460037 46.7199583,10.7414583 Z">
-                        </path>
-                        <path
-                          d="M39.198,22.4912623 C37.3776246,22.4928106 35.5817531,22.0149171 33.951625,21.0951667 L33.92225,21.1107282 C31.1430221,22.6838032 27.9255001,22.9318916 24.9844167,21.7998837 C24.4750389,21.605469 23.9777983,21.3722567 23.4960833,21.1018359 L23.4745417,21.1129513 C20.6961809,22.6871153 17.4786145,22.9344611 14.5386667,21.7998837 C14.029926,21.6054643 13.533337,21.3722507 13.0522917,21.1018359 C11.4250962,22.0190609 9.63246555,22.4947009 7.81570833,22.4912623 C7.16510551,22.4842162 6.51607673,22.4173045 5.875,22.2911849 L5.875,44.7220845 C5.875,45.9498589 6.7517757,46.9451667 7.83333333,46.9451667 L19.5833333,46.9451667 L19.5833333,33.6066734 L27.4166667,33.6066734 L27.4166667,46.9451667 L39.1666667,46.9451667 C40.2482243,46.9451667 41.125,45.9498589 41.125,44.7220845 L41.125,22.2822926 C40.4887822,22.4116582 39.8442868,22.4815492 39.198,22.4912623 Z">
-                        </path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </a>
-          </li>
-          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Inicio</a></li>
-          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Tienda</li>
-        </ol>
-        <h6 class="font-weight-bolder mb-0">Listado de productos</h6>
-      </nav>
-      <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
-        <a href="javascript:;" class="nav-link text-body p-0">
-          <div class="sidenav-toggler-inner">
-            <i class="sidenav-toggler-line"></i>
-            <i class="sidenav-toggler-line"></i>
-            <i class="sidenav-toggler-line"></i>
-          </div>
-        </a>
-      </div>
-      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-          <div class="input-group input-group-outline">
-            <label class="form-label">Buscar</label>
-            <input type="text" class="form-control">
-          </div>
-        </div>
-        <ul class="navbar-nav  justify-content-end">
-          <li class="nav-item">
-            <a href="../../../index.html"
-              class="nav-link text-body p-0 position-relative">
-              <i class="material-icons me-sm-1">
-                account_circle
-              </i>
-            </a>
-          </li>
-          <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-              <div class="sidenav-toggler-inner">
-                <i class="sidenav-toggler-line"></i>
-                <i class="sidenav-toggler-line"></i>
-                <i class="sidenav-toggler-line"></i>
-              </div>
-            </a>
-          </li>
-          <li class="nav-item px-3">
-            <a href="javascript:;" class="nav-link text-body p-0">
-              <i class="material-icons fixed-plugin-button-nav cursor-pointer">
-                settings
-              </i>
-            </a>
-          </li>
-          <li class="nav-item dropdown pe-2">
-            <a href="javascript:;" class="nav-link text-body p-0 position-relative" id="dropdownMenuButton"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="material-icons cursor-pointer">
-                notifications
-              </i>
-              <span
-                class="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger border border-white small py-1 px-2">
-                <span class="small">11</span>
-                <span class="visually-hidden">unread notifications</span>
-              </span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end p-2 me-sm-n4" aria-labelledby="dropdownMenuButton">
-              <li class="mb-2">
-                <a class="dropdown-item border-radius-md" href="javascript:;">
-                  <div class="d-flex align-items-center py-1">
-                    <span class="material-icons">email</span>
-                    <div class="ms-2">
-                      <h6 class="text-sm font-weight-normal my-auto">
-                        Revisar el correo de tu cuenta
-                      </h6>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-2">
-                <a class="dropdown-item border-radius-md" href="javascript:;">
-                  <div class="d-flex align-items-center py-1">
-                    <span class="material-icons">podcasts</span>
-                    <div class="ms-2">
-                      <h6 class="text-sm font-weight-normal my-auto">
-                        Subir cambios a tu tabla en linea
-                      </h6>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item border-radius-md" href="javascript:;">
-                  <div class="d-flex align-items-center py-1">
-                    <span class="material-icons">shopping_cart</span>
-                    <div class="ms-2">
-                      <h6 class="text-sm font-weight-normal my-auto">
-                        Listado de ventas realizadas 
-                      </h6>
-                    </div>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -334,7 +46,8 @@
                 </div>
                 <div class="ms-auto my-auto mt-lg-0 mt-4">
                   <div class="ms-auto my-auto">
-                    <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModalForm" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Nuevo
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModalForm"
+                      class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Nuevo
                       Producto</a>
                     <button type="button" class="btn btn-outline-primary btn-sm mb-0" data-bs-toggle="modal"
                       data-bs-target="#import">
@@ -377,10 +90,10 @@
                     <tr>
                       <th>Productos</th>
                       <th>Entrada</th>
-                      <th>Lote</th>
+                      <th>Cantidad</th>
                       <th>Precio</th>
                       <th>Importe</th>
-                      <th>Cantidad</th>
+                      <th>Categoría</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
@@ -391,10 +104,10 @@
                     <tr>
                       <th>Productos</th>
                       <th>Entrada</th>
-                      <th>Lote</th>
+                      <th>Cantidad</th>
                       <th>Precio</th>
                       <th>Importe</th>
-                      <th>Cantidad</th>
+                      <th>Categoría</th>
                       <th>Acciones</th>
                     </tr>
                   </tfoot>
@@ -489,8 +202,8 @@
           <div class="card bg-gray-200 shadow border-0 mb-0">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-warning shadow-warning border-radius-lg py-3 pe-1 text-center py-4">
-                <h4 class="font-weight-bolder text-white mt-1 mb-0">“Nos alegra verte de nuevo”</h4>
-                <p class="mb-1 text-sm text-white">Escribe tu usuario y contraseña para iniciar sesión</p>
+                <h4 class="font-weight-bolder text-white mt-1 mb-0">Agregar nuevo producto</h4>
+                <p class="mb-1 text-sm text-white">Esta información será enviada a la tabla de productos</p>
               </div>
             </div>
             <div class="card-body">
@@ -498,31 +211,36 @@
                 <div class="row mt-3">
                   <div class="col-12 col-sm-6">
                     <div class="input-group input-group-dynamic">
-                      <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-                      <input class="multisteps-form__input form-control" type="text">
+                      <label for="nombre" class="form-label">Nombre</label>
+                      <input id="nombre" class="multisteps-form__input form-control" type="text" required>
                     </div>
                   </div>
                   <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                     <div class="input-group input-group-dynamic">
-                      <label for="exampleFormControlInput1" class="form-label">Cantidad</label>
-                      <input class="multisteps-form__input form-control" type="text">
+                      <label for="precio" class="form-label">Precio</label>
+                      <input id="precio" class="multisteps-form__input form-control" type="number" required>
                     </div>
                   </div>
                 </div>
-                <div class="form-check form-switch d-flex align-items-center">
-                  <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-                  <label class="form-check-label mb-0 ms-3" for="rememberMe">Recuérdame</label>
+                <div class="row mt-3">
+                  <div class="col-12 col-sm-6">
+                    <div class="input-group input-group-dynamic">
+                      <label for="cantidad" class="form-label">Cantidad</label>
+                      <input id="cantidad" class="multisteps-form__input form-control" type="number" required>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                    <div class="input-group input-group-dynamic">
+                      <label for="categoria" class="form-label">Categoria</label>
+                      <input id="categoria" class="multisteps-form__input form-control" type="text" required>
+                    </div>
+                  </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn bg-gradient-warning mt-4 mb-0">Iniciar sesión de afiliado</button>
+                  <button type="submit" class="btn bg-gradient-warning mt-4 mb-0">Agregar</button>
                 </div>
               </form>
-            </div>
-            <div class="card-footer text-center pt-0">
-              <p class="mb-4 text-sm mx-auto">
-                ¿No tienes una cuenta?
-                <a href="javascript:;" class="text-warning text-gradient font-weight-bold">Regístrate</a>
-              </p>
+
             </div>
           </div>
         </div>

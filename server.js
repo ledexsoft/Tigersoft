@@ -9,80 +9,122 @@ window.cadenaUnida = cadena1 + cadena2 + cadena3;
 
 // Inicializa Supabase
 const supabase = createClient(
-    'https://bswqmxmanutqlayzdtpk.supabase.co',
-    window.cadenaUnida
+  'https://bswqmxmanutqlayzdtpk.supabase.co',
+  window.cadenaUnida
 );
 
 async function fetchData() {
-  let { data: Inventario_de_Tienda, error } = await supabase
-    .from('Inventario_de_Tienda')
-    .select('*');
+let { data: Inventario_de_Tienda, error } = await supabase
+  .from('Inventario_de_Tienda')
+  .select('*');
 
-  if (error) {
-    console.error('Error fetching data:', error);
-    return;
-  }
+if (error) {
+  console.error('Error fetching data:', error);
+  return;
+}
 
-  const tbody = document.getElementById('products-tbody');
-  Inventario_de_Tienda.forEach(item => {
-    const row = document.createElement('tr');
+const tbody = document.getElementById('products-tbody');
+tbody.innerHTML = ''; // Limpiar la tabla antes de agregar los nuevos datos
 
-    const importe = item.Cantidad * item.Precio;
+Inventario_de_Tienda.forEach(item => {
+  const row = document.createElement('tr');
 
-    // Formatear la fecha sin la zona horaria
-    const createdAt = new Date(item.created_at).toLocaleDateString();
+  const importe = item.Cantidad * item.Precio;
 
-    row.innerHTML = `
-      <td>
-        <div class="d-flex">
-          <div class="form-check my-auto">
-            <input class="form-check-input" type="checkbox" id="customCheck1" checked="">
-          </div>
-          <img class="w-10 ms-3" src="https://th.bing.com/th/id/OIP.tigsylfqnlPgwdYW12nRYwHaHa?w=209&h=210&c=7&r=0&o=5&pid=1.7" alt="${item.Producto}">
-          <h6 class="ms-3 my-auto">${item.Producto}</h6>
+  // Formatear la fecha sin la zona horaria
+  const createdAt = new Date(item.created_at).toLocaleDateString();
+
+  row.innerHTML = `
+    <td>
+      <div class="d-flex">
+        <div class="form-check my-auto">
+          <input class="form-check-input" type="checkbox" id="customCheck1" checked="">
         </div>
-      </td>
-      <td class="text-sm">${createdAt}</td>
-      <td class="text-sm">${item.Lote}</td>
-      <td class="text-sm">$${item.Precio}</td>
-      <td class="text-sm">$${importe}</td>
-      <td class="text-sm">${item.Cantidad}</td>
-      <td class="text-sm">
-        <a href="product-details.html?id=${item.id}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-          <i class="material-icons text-secondary position-relative text-lg">visibility</i>
-        </a>
-        <a href="edit-product.html?id=${item.id}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-          <i class="material-icons text-secondary position-relative text-lg">drive_file_rename_outline</i>
-        </a>
-        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product" onclick="deleteProduct(${item.id}, this)">
-          <i class="material-icons text-secondary position-relative text-lg">delete</i>
-        </a>
-      </td>
-    `;
+        <img class="w-10 ms-3" src="https://th.bing.com/th/id/OIP.tigsylfqnlPgwdYW12nRYwHaHa?w=209&h=210&c=7&r=0&o=5&pid=1.7" alt="${item.Producto}">
+        <h6 class="ms-3 my-auto">${item.Producto}</h6>
+      </div>
+    </td>
+    <td class="text-sm">${createdAt}</td>
+    <td class="text-sm">${item.Cantidad}</td>
+    <td class="text-sm">$${item.Precio}</td>
+    <td class="text-sm">$${importe}</td>
+    <td class="text-sm">${item.Categoria}</td>
+    <td class="text-sm">
+      <a href="product-details.html?id=${item.id}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+        <i class="material-icons text-secondary position-relative text-lg">visibility</i>
+      </a>
+      <a href="edit-product.html?id=${item.id}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+        <i class="material-icons text-secondary position-relative text-lg">drive_file_rename_outline</i>
+      </a>
+      <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product" onclick="deleteProduct(${item.id}, this)">
+        <i class="material-icons text-secondary position-relative text-lg">delete</i>
+      </a>
+    </td>
+  `;
 
-    tbody.appendChild(row);
-  });
+  tbody.appendChild(row);
+});
 
-  // Inicializar DataTables
-  $('#products-list').DataTable();
+// Inicializar DataTables
+$('#products-list').DataTable();
 }
 
 // Definir la función deleteProduct en el contexto global
 window.deleteProduct = async function(id, element) {
-  const { error } = await supabase
-    .from('Inventario_de_Tienda')
-    .delete()
-    .eq('id', id);
+const { error } = await supabase
+  .from('Inventario_de_Tienda')
+  .delete()
+  .eq('id', id);
 
-  if (error) {
-    console.error('Error deleting product:', error);
-    return;
-  }
-
-  // Eliminar la fila de la tabla
-  const row = element.closest('tr');
-  row.remove();
+if (error) {
+  console.error('Error deleting product:', error);
+  return;
 }
 
+// Eliminar la fila de la tabla
+const row = element.closest('tr');
+row.remove();
+}
+
+// Agregar evento al formulario del modal
+document.getElementById('IniciarAfiliado').addEventListener('submit', async function(event) {
+event.preventDefault();
+
+// Obtener los datos del formulario usando id
+const nombre = document.getElementById('nombre').value;
+const precio = parseFloat(document.getElementById('precio').value);
+const cantidad = parseInt(document.getElementById('cantidad').value);
+const categoria = document.getElementById('categoria').value;
+
+// Insertar el nuevo producto en la base de datos
+const { error } = await supabase
+  .from('Inventario_de_Tienda')
+  .insert([
+    { Producto: nombre, Precio: precio, Cantidad: cantidad, Categoria: categoria }
+  ]);
+
+if (error) {
+  console.error('Error adding product:', error);
+  return;
+}
+
+// Cerrar el modal usando JavaScript puro
+const modal = document.getElementById('exampleModalForm');
+const modalInstance = bootstrap.Modal.getInstance(modal);
+modalInstance.hide();
+
+// Volver a cargar la lista de productos
 fetchData();
-          
+});
+
+fetchData();
+
+
+
+
+fetchData();
+
+
+
+
+

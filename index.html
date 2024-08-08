@@ -41,16 +41,15 @@
               <div class="card-body text-center">
                 <h4 class="mb-0 font-weight-bolder">Javier Sarduy</h4>
                 <p class="mb-4">Introduce la contraseña para continuar</p>
-                <form role="form">
+                <form role="form" onsubmit="return validarFormulario(event)">
                   <div class="input-group input-group-dynamic">
-                    <label class="form-label">Contraseña de acceso a la Administración</label>
-                    <input type="password" class="form-control">
+                      <label class="form-label">Contraseña de acceso a la Administración</label>
+                      <input type="password" id="admin-password" class="form-control" required>
                   </div>
                   <div class="text-center">
-                    <button type="button" onclick="window.location.href ='analytics.html'"
-                      class="btn bg-gradient-dark mt-4 mb-0">Entrar</button>
+                      <button type="submit" class="btn bg-gradient-dark mt-4 mb-0">Entrar</button>
                   </div>
-                </form>
+              </form>
               </div>
             </div>
           </div>
@@ -78,15 +77,15 @@
                 <div class="card-body text-center">
                   <h4 class="mb-0 font-weight-bolder">Javier Sarduy</h4>
                   <p class="mb-4">Introduce la contraseña</p>
-                  <form role="form">
+                  <form role="form" onsubmit="return validarFormulario(event)">
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Contraseña</label>
-                      <input type="password" class="form-control">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" id="password" class="form-control" required>
                     </div>
                     <div class="text-center">
-                      <button type="button" onclick="window.location.href ='pages/ecommerce/products/products-list.html'" class="btn btn-lg w-100 bg-gradient-dark mb-0">Continuar</button>
+                        <button type="submit" class="btn btn-lg w-100 bg-gradient-dark mb-0">Continuar</button>
                     </div>
-                  </form>
+                </form>
                 </div>
               </div>
             </div>
@@ -94,10 +93,20 @@
         </div>
       </div>
     </section>
-    
+
   </main>
 
-  
+  <script>
+    function validarFormulario(event) {
+            event.preventDefault(); // Evita el envío del formulario por defecto
+            var password = event.target.querySelector('input[type="password"]').value;
+            if (password === "jsr") {
+                window.location.href = "pages/ecommerce/products/products-list.html";
+            } else {
+                alert("Contraseña incorrecta");
+            }
+        }
+  </script>
 
   <script src="assets/js/core/popper.min.js"></script>
   <script src="assets/js/core/bootstrap.min.js"></script>
